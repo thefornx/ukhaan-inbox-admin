@@ -11,7 +11,7 @@ export default function DashboardLayout({
             <TopNavigation />
             <div className="flex-1 flex flex-row overflow-auto p-1 gap-1">
                 <SideNavigation />
-                <div className="flex-1">
+                <div className="flex-1 h-full overflow-auto">
                     {children}
                 </div>
             </div>

@@ -1,7 +1,9 @@
-export default function StoreDashboard() {
+import StoreSettingsForm from "@/components/store/StoreSettingsForm";
+
+export default function StoreSettings() {
     return (
-        <div className="">
-            DASHBOARD HOME STORE
+        <div>
+            <StoreSettingsForm />
         </div>
     );
 }

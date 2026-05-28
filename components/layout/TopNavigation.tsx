@@ -1,7 +1,21 @@
-import { ChevronsUpDown } from "lucide-react";
+"use client";
+
+import { ChevronsUpDown, Moon, Sun } from "lucide-react";
 import Image from "next/image";
+import { useSyncExternalStore } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
+
+const noopSubscribe = () => () => {};
 
 export default function TopNavigation() {
+    const { theme, toggleTheme } = useTheme();
+    // The resolved theme is only known on the client. Render the server's
+    // default (unchecked) until hydrated to avoid a mismatch on the input.
+    const hydrated = useSyncExternalStore(
+        noopSubscribe,
+        () => true,
+        () => false,
+    );
     const fullName = "John Doe";
     const initials = fullName
         .split(" ")
@@ -52,6 +66,21 @@ export default function TopNavigation() {
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div>
+                {/* Theme toggle button */}
+                <label className="btn swap btn-sm btn-soft btn-primary btn-square">
+                    <input
+                        type="checkbox"
+                        aria-label="Toggle theme"
+                        checked={hydrated && theme === "dark"}
+                        onChange={toggleTheme}
+                    />
+
+                    <Sun className="swap-on w-4 h-4" />
+
+                    <Moon className="swap-off w-4 h-4" />
+                </label>
             </div>
         </nav>
     );
