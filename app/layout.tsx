@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -19,6 +21,11 @@ export const metadata: Metadata = {
   description: "Ukhaan inbox admin dashboard",
 };
 
+// Sets data-theme and lang on <html> before hydration to avoid a flash of the
+// wrong theme/language. Keys must stay in sync with THEME_STORAGE_KEY and
+// LANGUAGE_STORAGE_KEY.
+const BOOT_SCRIPT = `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t="light";}document.documentElement.setAttribute("data-theme",t);var l=localStorage.getItem("language");if(l!=="en"&&l!=="mn"){l="en";}document.documentElement.setAttribute("lang",l);}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,21 +37,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${roboto.variable} ${robotoMono.variable} h-full antialiased`}
     >
-      <head>
-        {/*
-          Set data-theme before first paint to avoid a flash of the wrong
-          theme and a hydration mismatch. Mirrors the resolution logic in
-          contexts/ThemeContext.tsx (key must stay in sync with
-          THEME_STORAGE_KEY).
-        */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t="light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();`,
-          }}
-        />
-      </head>
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
+        <Script id="theme-language-boot" strategy="beforeInteractive">
+          {BOOT_SCRIPT}
+        </Script>
+        <ThemeProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

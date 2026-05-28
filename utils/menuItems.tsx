@@ -1,97 +1,112 @@
 import { Box, Boxes, Crown, House, List, MessageCircleMore, Settings, ShoppingCart, Store, Tag, Users, Wallet } from "lucide-react";
+import type { ReactNode } from "react";
 
-export const menuItems = [
+export type MenuChild = {
+    nameKey: string;
+    href: string;
+    icon: ReactNode;
+};
+
+export type MenuItem = {
+    nameKey: string;
+    tooltipKey: string;
+    href: string;
+    icon: ReactNode;
+    children?: MenuChild[];
+};
+
+export const menuItems: MenuItem[] = [
     {
-        name: "Home",
+        nameKey: "nav.home",
+        tooltipKey: "nav.homeTooltip",
         href: "/",
-        icon: <House className="w-5 h-5" />,
-        tooltip: "Home"
+        icon: <House className="w-5 h-5" strokeWidth={1.5} />,
     },
     {
-        name: "Store",
+        nameKey: "nav.store",
+        tooltipKey: "nav.storeTooltip",
         href: "/store",
-        icon: <Store className="w-5 h-5" />,
-        tooltip: "Manage store",
+        icon: <Store className="w-5 h-5" strokeWidth={1.5} />,
         children: [
             {
-                name: "Settings",
+                nameKey: "nav.settings",
                 href: "/store",
-                icon: <Settings className="w-4 h-4" />
+                icon: <Settings className="w-4 h-4" />,
             },
             {
-                name: "Subscription",
+                nameKey: "nav.subscription",
                 href: "/store/subscription",
-                icon: <Crown className="w-4 h-4" />
+                icon: <Crown className="w-4 h-4" />,
             },
             {
-                name: "Branches",
+                nameKey: "nav.branches",
                 href: "/store/branches",
-                icon: <Store className="w-4 h-4" />
+                icon: <Store className="w-4 h-4" />,
             },
             {
-                name: "Brands",
+                nameKey: "nav.brands",
                 href: "/store/brands",
-                icon: <Tag className="w-4 h-4" />
-            }
-        ]
+                icon: <Tag className="w-4 h-4" />,
+            },
+        ],
     },
     {
-        name: "Product",
+        nameKey: "nav.product",
+        tooltipKey: "nav.productTooltip",
         href: "/product",
-        icon: <Box className="w-5 h-5" />,
-        tooltip: "Manage product",
+        icon: <Box className="w-5 h-5" strokeWidth={1.5} />,
         children: [
             {
-                name: "Products",
+                nameKey: "nav.products",
                 href: "/product",
-                icon: <Box className="w-4 h-4" />
+                icon: <Box className="w-4 h-4" />,
             },
             {
-                name: "Categories",
+                nameKey: "nav.categories",
                 href: "/product/categories",
-                icon: <List className="w-4 h-4" />
+                icon: <List className="w-4 h-4" />,
             },
             {
-                name: "Collections",
+                nameKey: "nav.collections",
                 href: "/product/collections",
-                icon: <Boxes className="w-4 h-4" />
-            }
-        ]
+                icon: <Boxes className="w-4 h-4" />,
+            },
+        ],
     },
     {
-        name: "Order",
+        nameKey: "nav.order",
+        tooltipKey: "nav.orderTooltip",
         href: "/order",
-        icon: <ShoppingCart className="w-5 h-5" />,
-        tooltip: "Manage order",
+        icon: <ShoppingCart className="w-5 h-5" strokeWidth={1.5} />,
         children: [
             {
-                name: "Orders",
+                nameKey: "nav.orders",
                 href: "/order",
-                icon: <ShoppingCart className="w-4 h-4" />
+                icon: <ShoppingCart className="w-4 h-4" />,
             },
             {
-                name: "Payments",
+                nameKey: "nav.payments",
                 href: "/order/payments",
-                icon: <Wallet className="w-4 h-4" />
+                icon: <Wallet className="w-4 h-4" />,
             },
-        ]
+        ],
     },
     {
-        name: "User",
+        nameKey: "nav.user",
+        tooltipKey: "nav.userTooltip",
         href: "/user",
-        icon: <Users className="w-5 h-5" />,
-        tooltip: "Manage user",
+        icon: <Users className="w-5 h-5" strokeWidth={1.5} />,
         children: [
             {
-                name: "Users",
+                nameKey: "nav.users",
                 href: "/user",
-                icon: <Users className="w-4 h-4" />
+                icon: <Users className="w-4 h-4" />,
             },
             {
-                name: "Chats",
+                nameKey: "nav.chats",
                 href: "/user/chats",
-                icon: <MessageCircleMore className="w-4 h-4" />
-            }
-        ]
-    }
+                icon: <MessageCircleMore className="w-4 h-4" />,
+            },
+        ],
+    },
 ];

@@ -1,0 +1,52 @@
+{
+  "common": {
+    "save": "Save changes",
+    "reset": "Reset",
+    "saved": "Settings saved.",
+    "active": "Active",
+    "current": "Current",
+    "language": "Language",
+    "english": "English",
+    "mongolian": "Монгол",
+    "company": "COMPANY",
+    "toggleTheme": "Toggle theme",
+    "selectLanguage": "Select language"
+  },
+  "nav": {
+    "home": "Home",
+    "homeTooltip": "Home",
+    "store": "Store",
+    "storeTooltip": "Manage store",
+    "product": "Product",
+    "productTooltip": "Manage product",
+    "order": "Order",
+    "orderTooltip": "Manage order",
+    "user": "User",
+    "userTooltip": "Manage user",
+    "settings": "Settings",
+    "subscription": "Subscription",
+    "branches": "Branches",
+    "brands": "Brands",
+    "products": "Products",
+    "categories": "Categories",
+    "collections": "Collections",
+    "orders": "Orders",
+    "payments": "Payments",
+    "users": "Users",
+    "chats": "Chats"
+  },
+  "home": {
+    "title": "DASHBOARD HOME"
+  },
+  "placeholders": {
+    "storeBrands": "DASHBOARD STORE/BRANDS",
+    "storeBranches": "DASHBOARD HOME STORE/BRANCHES",
+    "order": "DASHBOARD ORDER",
+    "orderPayments": "DASHBOARD ORDER/RETURNS",
+    "user": "DASHBOARD USER",
+    "userChats": "DASHBOARD HOME USER/CHATS",
+    "product": "DASHBOARD PRODUCT",
+    "productCategories": "DASHBOARD PRODUCT/CATEGORIES",
+    "productCollections": "DASHBOARD PRODUCT/COLLECTIONS"
+  }
+}

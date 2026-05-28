@@ -1,7 +1,8 @@
-export default function Branches() {
-    return (
-        <div className="">
-            DASHBOARD HOME USER/CHATS
-        </div>
-    );
+"use client";
+
+import { useTranslation } from "@/contexts/LanguageContext";
+
+export default function Chats() {
+    const { t } = useTranslation();
+    return <div className="">{t("placeholders.userChats")}</div>;
 }

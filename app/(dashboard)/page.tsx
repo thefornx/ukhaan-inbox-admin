@@ -1,9 +1,8 @@
-import Image from "next/image";
+"use client";
+
+import { useTranslation } from "@/contexts/LanguageContext";
 
 export default function Home() {
-  return (
-    <div className="">
-        DASHBOARD HOME
-    </div>
-  );
+  const { t } = useTranslation();
+  return <div className="">{t("home.title")}</div>;
 }

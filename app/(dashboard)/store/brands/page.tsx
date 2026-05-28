@@ -1,7 +1,8 @@
+"use client";
+
+import { useTranslation } from "@/contexts/LanguageContext";
+
 export default function Brands() {
-    return (
-        <div className="">
-            DASHBOARD STORE/BRANDS
-        </div>
-    );
+    const { t } = useTranslation();
+    return <div className="">{t("placeholders.storeBrands")}</div>;
 }

@@ -1,28 +1,28 @@
 "use client";
 
-import { ChevronsUpDown, Moon, Sun } from "lucide-react";
+import { Check, ChevronsUpDown, Globe, Moon, Sun } from "lucide-react";
 import Image from "next/image";
 import { useSyncExternalStore } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { LOCALES, useLanguage, type Locale } from "@/contexts/LanguageContext";
 
 const noopSubscribe = () => () => {};
 
+const LOCALE_LABEL_KEY: Record<Locale, string> = {
+    en: "common.english",
+    mn: "common.mongolian",
+};
+
 export default function TopNavigation() {
     const { theme, toggleTheme } = useTheme();
-    // The resolved theme is only known on the client. Render the server's
-    // default (unchecked) until hydrated to avoid a mismatch on the input.
+    const { locale, setLocale, t } = useLanguage();
+    // The resolved theme/locale is only known on the client. Render the
+    // server's default until hydrated to avoid input/text mismatches.
     const hydrated = useSyncExternalStore(
         noopSubscribe,
         () => true,
         () => false,
     );
-    const fullName = "John Doe";
-    const initials = fullName
-        .split(" ")
-        .map((part) => part[0])
-        .join("")
-        .slice(0, 2)
-        .toUpperCase();
 
     return (
         <nav className="bg-base-100 border-b border-base-300 flex items-center justify-between p-2">
@@ -67,12 +67,47 @@ export default function TopNavigation() {
                     </ul>
                 </div>
             </div>
-            <div>
+            <div className="flex items-center gap-2">
+                {/* Language switcher */}
+                <div className="dropdown dropdown-end">
+                    <div
+                        tabIndex={0}
+                        role="button"
+                        aria-label={t("common.selectLanguage")}
+                        className="btn btn-sm btn-soft btn-primary"
+                    >
+                        <Globe className="w-4 h-4" />
+                        <span className="uppercase">{hydrated ? locale : "en"}</span>
+                    </div>
+                    <ul
+                        tabIndex={-1}
+                        className="dropdown-content menu bg-base-100 rounded-box z-1 w-40 p-2 shadow-sm border border-base-300"
+                    >
+                        {LOCALES.map((code) => {
+                            const isActive = hydrated && locale === code;
+                            return (
+                                <li key={code}>
+                                    <button
+                                        type="button"
+                                        onClick={() => setLocale(code)}
+                                        className={isActive ? "active" : undefined}
+                                    >
+                                        <span className="flex-1 text-left">
+                                            {t(LOCALE_LABEL_KEY[code])}
+                                        </span>
+                                        {isActive && <Check className="w-4 h-4" />}
+                                    </button>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+
                 {/* Theme toggle button */}
                 <label className="btn swap btn-sm btn-soft btn-primary btn-square">
                     <input
                         type="checkbox"
-                        aria-label="Toggle theme"
+                        aria-label={t("common.toggleTheme")}
                         checked={hydrated && theme === "dark"}
                         onChange={toggleTheme}
                     />

@@ -1,7 +1,8 @@
+"use client";
+
+import { useTranslation } from "@/contexts/LanguageContext";
+
 export default function Orders() {
-    return (
-        <div className="">
-            DASHBOARD ORDER
-        </div>
-    );
+    const { t } = useTranslation();
+    return <div className="">{t("placeholders.order")}</div>;
 }

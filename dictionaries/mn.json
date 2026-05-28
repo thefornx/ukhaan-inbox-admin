@@ -1,0 +1,52 @@
+{
+  "common": {
+    "save": "Хадгалах",
+    "reset": "Анхдагч руу буцаах",
+    "saved": "Тохиргоо хадгалагдлаа.",
+    "active": "Идэвхтэй",
+    "current": "Одоогийн",
+    "language": "Хэл",
+    "english": "English",
+    "mongolian": "Монгол",
+    "company": "КОМПАНИ",
+    "toggleTheme": "Загвар солих",
+    "selectLanguage": "Хэл сонгох"
+  },
+  "nav": {
+    "home": "Нүүр",
+    "homeTooltip": "Нүүр хуудас",
+    "store": "Дэлгүүр",
+    "storeTooltip": "Дэлгүүр удирдах",
+    "product": "Бараа",
+    "productTooltip": "Бараа удирдах",
+    "order": "Захиалга",
+    "orderTooltip": "Захиалга удирдах",
+    "user": "Хэрэглэгч",
+    "userTooltip": "Хэрэглэгч удирдах",
+    "settings": "Тохиргоо",
+    "subscription": "Багц",
+    "branches": "Салбарууд",
+    "brands": "Брэндүүд",
+    "products": "Бараанууд",
+    "categories": "Ангилал",
+    "collections": "Цуглуулга",
+    "orders": "Захиалгууд",
+    "payments": "Төлбөр",
+    "users": "Хэрэглэгчид",
+    "chats": "Чат"
+  },
+  "home": {
+    "title": "ХЯНАЛТЫН САМБАР"
+  },
+  "placeholders": {
+    "storeBrands": "ХЯНАЛТЫН САМБАР ДЭЛГҮҮР/БРЭНД",
+    "storeBranches": "ХЯНАЛТЫН САМБАР ДЭЛГҮҮР/САЛБАР",
+    "order": "ХЯНАЛТЫН САМБАР ЗАХИАЛГА",
+    "orderPayments": "ХЯНАЛТЫН САМБАР ЗАХИАЛГА/ТӨЛБӨР",
+    "user": "ХЯНАЛТЫН САМБАР ХЭРЭГЛЭГЧ",
+    "userChats": "ХЯНАЛТЫН САМБАР ХЭРЭГЛЭГЧ/ЧАТ",
+    "product": "ХЯНАЛТЫН САМБАР БАРАА",
+    "productCategories": "ХЯНАЛТЫН САМБАР БАРАА/АНГИЛАЛ",
+    "productCollections": "ХЯНАЛТЫН САМБАР БАРАА/ЦУГЛУУЛГА"
+  }
+}

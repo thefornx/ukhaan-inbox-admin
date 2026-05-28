@@ -1,11 +1,13 @@
 "use client";
 
 import { menuItems } from "@/utils/menuItems";
+import { useTranslation } from "@/contexts/LanguageContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function SideNavigation() {
     const pathname = usePathname();
+    const { t } = useTranslation();
 
     const activeItem = menuItems.find((item) =>
         item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
@@ -26,16 +28,17 @@ export default function SideNavigation() {
                         item.href === "/"
                             ? pathname === "/"
                             : pathname.startsWith(item.href);
+                    const tooltip = t(item.tooltipKey);
 
                     return (
                         <div
                             key={item.href}
                             className="tooltip tooltip-right"
-                            data-tip={item.tooltip}
+                            data-tip={tooltip}
                         >
                             <Link
                                 href={item.href}
-                                aria-label={item.tooltip}
+                                aria-label={tooltip}
                                 aria-current={isActive ? "page" : undefined}
                                 className={`flex p-1.5 items-center justify-center rounded-lg transition-colors ${
                                     isActive
@@ -53,7 +56,7 @@ export default function SideNavigation() {
             {children.length > 0 && (
                 <nav className="flex flex-col gap-1 bg-base-100 border border-base-300 p-2 rounded-lg w-48">
                     <span className="px-2 py-1 text-xs font-semibold uppercase tracking-wide text-base-content/80">
-                        {activeItem?.tooltip}
+                        {activeItem ? t(activeItem.tooltipKey) : null}
                     </span>
                     {children.map((child) => {
                         const isActive = child.href === activeChildHref;
@@ -70,7 +73,7 @@ export default function SideNavigation() {
                                 }`}
                             >
                                 {child.icon}
-                                <span>{child.name}</span>
+                                <span>{t(child.nameKey)}</span>
                             </Link>
                         );
                     })}

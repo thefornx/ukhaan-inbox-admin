@@ -1,7 +1,8 @@
+"use client";
+
+import { useTranslation } from "@/contexts/LanguageContext";
+
 export default function Products() {
-    return (
-        <div className="">
-            DASHBOARD PRODUCT
-        </div>
-    );
+    const { t } = useTranslation();
+    return <div className="">{t("placeholders.product")}</div>;
 }
